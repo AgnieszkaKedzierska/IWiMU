@@ -4,6 +4,7 @@ Przykładowa konsultacja systemu ekspertowego wspomagającego
 wybór zwierzęcia domowego:
 
 === Wnioskowanie wstecz ===
+
 Czy masz uczulenie na sierść? (tak/nie) nie
 
 Jak duże masz mieszkanie? (małe/duże) duże
