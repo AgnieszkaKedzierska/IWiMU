@@ -1,0 +1,743 @@
+{
+  "nazwa": "Zakup zwierzęcia domowego",
+  "cel": "zwierze",
+  "atrybuty": {
+    "uczulenie": {
+      "typ": "wybor",
+      "pytanie": "Czy masz uczulenie na sierść?",
+      "wartosci": [
+        "tak",
+        "nie"
+      ]
+    },
+    "czas_opieki": {
+      "typ": "liczba",
+      "pytanie": "Ile minut dziennie na opiekę?",
+      "zakres": [
+        0,
+        180
+      ]
+    },
+    "wielkosc_mieszkania": {
+      "typ": "wybor",
+      "pytanie": "Jak duże masz mieszkanie?",
+      "wartosci": [
+        "małe",
+        "duże"
+      ]
+    },
+    "kontakt": {
+      "typ": "wybor",
+      "pytanie": "Jaki kontakt preferujesz?",
+      "wartosci": [
+        "obserwacja",
+        "bliski kontakt"
+      ]
+    },
+    "spacery": {
+      "typ": "wybor",
+      "pytanie": "Czy możesz wyprowadzać na spacery?",
+      "wartosci": [
+        "tak",
+        "nie"
+      ]
+    },
+    "rodzaj_zwierzecia": {
+      "typ": "wniosek",
+      "wartosci": [
+        "bez_futra",
+        "bez_różnicy"
+      ]
+    },
+    "zwierze": {
+      "typ": "wniosek",
+      "wartosci": [
+        "rybki akwariowe",
+        "wąż",
+        "gekon",
+        "agama",
+        "żółw",
+        "papuga",
+        "chomik",
+        "świnka morska",
+        "pies",
+        "kot"
+      ]
+    }
+  },
+  "reguly": [
+    {
+      "id": "R1",
+      "jesli": [
+        [
+          "uczulenie",
+          "==",
+          "tak"
+        ]
+      ],
+      "to": [
+        "rodzaj_zwierzecia",
+        "bez_futra"
+      ],
+      "metafora": "Przy uczuleniu na sierść w drzewie wybieramy gałąź zwierząt bez futra."
+    },
+    {
+      "id": "R2",
+      "jesli": [
+        [
+          "uczulenie",
+          "==",
+          "nie"
+        ]
+      ],
+      "to": [
+        "rodzaj_zwierzecia",
+        "bez_różnicy"
+      ],
+      "metafora": "Brak uczulenia na sierść nie ogranicza wyboru do zwierząt bez futra."
+    },
+    {
+      "id": "R3",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "rybki akwariowe"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: mniej niż 60 minut i preferencji: obserwacja, drzewo wskazuje rybki akwariowe.",
+      "coto": "Zwierzęta wodne utrzymywane w akwarium, przeznaczone głównie do obserwacji."
+    },
+    {
+      "id": "R4",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "wąż"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: mniej niż 60 minut i preferencji: bliski kontakt, drzewo wskazuje wąż.",
+      "coto": "Gad utrzymywany w odpowiednio przygotowanym terrarium."
+    },
+    {
+      "id": "R5",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "gekon"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: małe i preferencji: obserwacja, drzewo wskazuje gekon.",
+      "coto": "Niewielka jaszczurka utrzymywana w terrarium."
+    },
+    {
+      "id": "R6",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "agama"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: małe i preferencji: bliski kontakt, drzewo wskazuje agama.",
+      "coto": "Jaszczurka utrzymywana w odpowiednio wyposażonym terrarium."
+    },
+    {
+      "id": "R7",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "żółw"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: duże i preferencji: obserwacja, drzewo wskazuje żółw.",
+      "coto": "Gad z pancerzem, wymagający warunków dostosowanych do gatunku."
+    },
+    {
+      "id": "R8",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_futra"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "papuga"
+      ],
+      "metafora": "Przy uczuleniu na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: duże i preferencji: bliski kontakt, drzewo wskazuje papuga.",
+      "coto": "Ptak lubiący kontakt z opiekunem."
+    },
+    {
+      "id": "R9",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "rybki akwariowe"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: mniej niż 60 minut, mieszkaniu: małe i preferencji: obserwacja, drzewo wskazuje rybki akwariowe.",
+      "coto": "Zwierzęta wodne utrzymywane w akwarium, przeznaczone głównie do obserwacji."
+    },
+    {
+      "id": "R10",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "chomik"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: mniej niż 60 minut, mieszkaniu: małe i preferencji: bliski kontakt, drzewo wskazuje chomik.",
+      "coto": "Mały gryzoń domowy."
+    },
+    {
+      "id": "R11",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "gekon"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: małe i preferencji: obserwacja, drzewo wskazuje gekon.",
+      "coto": "Niewielka jaszczurka utrzymywana w terrarium."
+    },
+    {
+      "id": "R12",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "małe"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "świnka morska"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: co najmniej 60 minut, mieszkaniu: małe i preferencji: bliski kontakt, drzewo wskazuje świnka morska.",
+      "coto": "Gryzoń domowy, zwany również kawią domową."
+    },
+    {
+      "id": "R13",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "rybki akwariowe"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: mniej niż 60 minut, mieszkaniu: duże i preferencji: obserwacja, drzewo wskazuje rybki akwariowe.",
+      "coto": "Zwierzęta wodne utrzymywane w akwarium, przeznaczone głównie do obserwacji."
+    },
+    {
+      "id": "R14",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          ">=",
+          0
+        ],
+        [
+          "czas_opieki",
+          "<",
+          60
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "chomik"
+      ],
+      "metafora": "Przy braku uczulenia na sierść, czasie opieki: mniej niż 60 minut, mieszkaniu: duże i preferencji: bliski kontakt, drzewo wskazuje chomik.",
+      "coto": "Mały gryzoń domowy."
+    },
+    {
+      "id": "R15",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          ">",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "spacery",
+          "==",
+          "tak"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "pies"
+      ],
+      "metafora": "W tej gałęzi drzewa (powyżej 60 minut opieki, duże mieszkanie, brak uczulenia) możliwość spacerów prowadzi do wyboru: pies.",
+      "coto": "Zwierzę domowe wymagające regularnych spacerów."
+    },
+    {
+      "id": "R16",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          "==",
+          60
+        ],
+        [
+          "spacery",
+          "==",
+          "tak"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "pies"
+      ],
+      "metafora": "W tej gałęzi drzewa (dokładnie 60 minut opieki, duże mieszkanie, brak uczulenia) możliwość spacerów prowadzi do wyboru: pies.",
+      "coto": "Zwierzę domowe wymagające regularnych spacerów."
+    },
+    {
+      "id": "R17",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          ">",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "spacery",
+          "==",
+          "nie"
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "żółw"
+      ],
+      "metafora": "W tej gałęzi drzewa (powyżej 60 minut opieki, duże mieszkanie, brak uczulenia) brak możliwości spacerów i obserwacja prowadzi do wyboru: żółw.",
+      "coto": "Gad z pancerzem, wymagający warunków dostosowanych do gatunku."
+    },
+    {
+      "id": "R18",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          "==",
+          60
+        ],
+        [
+          "spacery",
+          "==",
+          "nie"
+        ],
+        [
+          "kontakt",
+          "==",
+          "obserwacja"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "żółw"
+      ],
+      "metafora": "W tej gałęzi drzewa (dokładnie 60 minut opieki, duże mieszkanie, brak uczulenia) brak możliwości spacerów i obserwacja prowadzi do wyboru: żółw.",
+      "coto": "Gad z pancerzem, wymagający warunków dostosowanych do gatunku."
+    },
+    {
+      "id": "R19",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          ">",
+          60
+        ],
+        [
+          "czas_opieki",
+          "<=",
+          180
+        ],
+        [
+          "spacery",
+          "==",
+          "nie"
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "kot"
+      ],
+      "metafora": "W tej gałęzi drzewa (powyżej 60 minut opieki, duże mieszkanie, brak uczulenia) brak możliwości spacerów i bliski kontakt prowadzi do wyboru: kot.",
+      "coto": "Zwierzę domowe, z którym można nawiązać bliski kontakt."
+    },
+    {
+      "id": "R20",
+      "jesli": [
+        [
+          "rodzaj_zwierzecia",
+          "==",
+          "bez_różnicy"
+        ],
+        [
+          "wielkosc_mieszkania",
+          "==",
+          "duże"
+        ],
+        [
+          "czas_opieki",
+          "==",
+          60
+        ],
+        [
+          "spacery",
+          "==",
+          "nie"
+        ],
+        [
+          "kontakt",
+          "==",
+          "bliski kontakt"
+        ]
+      ],
+      "to": [
+        "zwierze",
+        "kot"
+      ],
+      "metafora": "W tej gałęzi drzewa (dokładnie 60 minut opieki, duże mieszkanie, brak uczulenia) brak możliwości spacerów i bliski kontakt prowadzi do wyboru: kot.",
+      "coto": "Zwierzę domowe, z którym można nawiązać bliski kontakt."
+    }
+  ]
+}
